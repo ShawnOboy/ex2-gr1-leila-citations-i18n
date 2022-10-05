@@ -11,11 +11,23 @@
  */
 function obtenirCitationAleatoire($lan, $section) 
 {
-    $citationsJson = file_get_contents("data/citations-$section-$lan.json");
-    $citations = json_decode($citationsJson, true);
-    $positionAleatoire = rand(0, count($citations)-1);
-    $citation = $citations[$positionAleatoire];
+    if(file_exists("data/citations-$section-$lan.json")) {
+
+        $citationsJson = file_get_contents("data/citations-$section-$lan.json");
+        $citations = json_decode($citationsJson, true);
+        $positionAleatoire = rand(0, count($citations)-1);
+        $citation = $citations[$positionAleatoire];
+
+    }
+
+    else {
+
+        $citationsJson = file_get_contents("data/citations-$section-$lan.json");
+
+    }
+
     return $citation;
+    
 }
 
 /*********** INTERNATIONALISATION *********************************************/
