@@ -3,14 +3,15 @@
 /**
  * Génère et retourne une citation aléatoire.
  * 
+ * @param string $lan : Determine la langue à prendre en compte
  * @param string $section : Identifiant de la page pour laquelle on veut une 
  * citation.
  * 
  * @return array : Tableau contenant l'auteur et le texte d'une citation.
  */
-function obtenirCitationAleatoire($section) 
+function obtenirCitationAleatoire($lan, $section) 
 {
-    $citationsJson = file_get_contents('data/citations-' . $section . '.json');
+    $citationsJson = file_get_contents("data/citations-$section-$lan.json");
     $citations = json_decode($citationsJson, true);
     $positionAleatoire = rand(0, count($citations)-1);
     $citation = $citations[$positionAleatoire];

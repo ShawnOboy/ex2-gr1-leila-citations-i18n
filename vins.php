@@ -4,7 +4,7 @@
   include('inclusions/entete.inc.php');
 
   // Gestion de la citation aléatoire
-  $citation = obtenirCitationAleatoire($page);
+  $citation = obtenirCitationAleatoire($lan, $page);
 ?>
 <div class="contenu-principal">
       <div class="citation">
